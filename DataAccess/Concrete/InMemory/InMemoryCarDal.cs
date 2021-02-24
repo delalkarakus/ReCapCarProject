@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
@@ -15,10 +16,10 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>
             {
-                new Car {CarId = 1, BrandId = 1, ColorId = 1, ModelYear = 1985, DailyPrice = 20000, Description = "Beyaz Audi"},
-                new Car {CarId = 2, BrandId = 1, ColorId = 2, ModelYear = 1990, DailyPrice = 30000, Description = "Siyah Audi"},
-                new Car {CarId = 3, BrandId = 2, ColorId = 2, ModelYear = 2000, DailyPrice = 40000, Description = "Siyah Volvo"},
-                new Car {CarId = 4, BrandId = 3, ColorId = 3, ModelYear = 2005, DailyPrice = 50000, Description = "Kırmızı Ford"},
+                new Car {CarId = 1, BrandId = 1, ColorId = 1, ModelYear = 1985, DailyPrice = 20000, Descriptions = "Beyaz Audi"},
+                new Car {CarId = 2, BrandId = 1, ColorId = 2, ModelYear = 1990, DailyPrice = 30000, Descriptions = "Siyah Audi"},
+                new Car {CarId = 3, BrandId = 2, ColorId = 2, ModelYear = 2000, DailyPrice = 40000, Descriptions = "Siyah Volvo"},
+                new Car {CarId = 4, BrandId = 3, ColorId = 3, ModelYear = 2005, DailyPrice = 50000, Descriptions = "Kırmızı Ford"},
             };
         }
 
@@ -33,9 +34,19 @@ namespace DataAccess.Concrete.InMemory
             _cars.Remove(carToDelete);
         }
 
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetAll()
         {
             return _cars;
+        }
+
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Car> GetAllByCar(int carId)
@@ -51,7 +62,7 @@ namespace DataAccess.Concrete.InMemory
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
             carToUpdate.ModelYear = car.ModelYear;
-            carToUpdate.Description = car.Description;
+            carToUpdate.Descriptions = car.Descriptions;
         }
     }
 }
