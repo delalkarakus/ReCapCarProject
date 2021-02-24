@@ -13,10 +13,12 @@ namespace ConsoleUser
 
             foreach (var car in carManager.GetAll())
             {
-                Console.WriteLine(car.CarId+ " / "+ car.Descriptions);
+                Console.WriteLine("CarId: "+ car.CarId+ " / Car Descriptions: "+ car.Descriptions+" / Car Daily Price: " + car.DailyPrice);
+              
                 
             }
-            
+
+
         }
     }
 }
